@@ -10,7 +10,7 @@ class Search extends Component {
     handleOnChange = event => {
         this.setState({ searchValue: event.target.value });
     }
-    
+
     render() {
         return (
             <div>
@@ -21,7 +21,7 @@ class Search extends Component {
                 onChange={event=> this.handleOnChange(event)}
                 value={this.state.searchValue}
                 />
-                <button>Search</button>
+                <button onClick={this.handleSearch}>Search</button>
             </div>
         );
     }
