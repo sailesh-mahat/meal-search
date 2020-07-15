@@ -6,6 +6,11 @@ class Search extends Component {
     state = {
         searchValue: '',
     };
+
+    handleOnChange = event => {
+        this.setState({ searchValue: event.target.value });
+    }
+    
     render() {
         return (
             <div>
