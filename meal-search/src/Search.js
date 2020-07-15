@@ -11,6 +11,21 @@ class Search extends Component {
         this.setState({ searchValue: event.target.value });
     }
 
+    handleSearch = () => {
+        this.makeApiCall(this.state.searchValue);
+    }
+
+    makeApiCall = searchInput => {
+        var searchUrl = `https://www.themealdb.com/api/json/v1/1/search.php?s=${searchInput}`;
+        fetch(searchUrl)
+        .then(response => {
+            return response.json();
+        })
+        .then(jsonData => {
+            console.log(jsonData.meals);
+        });
+    };
+
     render() {
         return (
             <div>
