@@ -5,6 +5,7 @@ class Search extends Component {
 
     state = {
         searchValue: '',
+        meals: []
     };
 
     handleOnChange = event => {
@@ -23,6 +24,7 @@ class Search extends Component {
         })
         .then(jsonData => {
             console.log(jsonData.meals);
+            this.setState({ meals: jsonData.meals});
         });
     };
 
@@ -37,6 +39,19 @@ class Search extends Component {
                 value={this.state.searchValue}
                 />
                 <button onClick={this.handleSearch}>Search</button>
+
+                {this.state.meals ? (
+                    <div>
+                        {this.state.meals.map((meal, index) => (
+                            <div key={index}>
+                                <h1>{meal.strMeal}</h1>
+                                <img src={meal.strMealThumb} alt="meal-thumbnail" />
+                            </div>
+                        ))}
+                    </div>
+                ) : (
+                    <p>Try searching for a meal</p>
+                )}
             </div>
         );
     }
